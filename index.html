@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вариант 2</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./fonts/inter.css">
 </head>
 <body>
     <header>        
@@ -24,18 +25,31 @@
 
     <main>
         <div class="action-header">
-            <button type="button"> 
+            <button type="button" class="filter-button" id="filter-btn" onclick="toggleDropdown('filter-dropdown')"> 
                 <img src="./images/leading.svg" alt="Фильтры" width="20" height="20">   
                 <div class="label">Фильтры</div>
             </button>            
-            <button type="button">
+            <div id="filter-dropdown" class="dropdown">
+                <div class="main">
+                    <div class="item"><label><input type="checkbox"> Акне Студия</label></div>
+                    <div class="item"><label><input type="checkbox"> АМИ Париж</label></div>
+                    <div class="item"><label><input type="checkbox"> Вквадрате2</label></div>
+                    <div class="item"><label><input type="checkbox"> Каменный остров</label></div>          
+                </div>            
+            </div>
+            <button type="button" class="sort-button" id="sort-btn" onclick="toggleDropdown('sort-dropdown')">
                 <div class="label">По умолчанию</div>
                 <img src="./images/trailing.svg" alt="Сортировка по цене" width="20" height="20">                   
             </button> 
-        </div> 
+            <div id="sort-dropdown" class="dropdown">
+                <div class="main">
+                    <div class="item"><label>По умолчанию</label></div>
+                    <div class="item"><label>Сначала доступные</label></div>
+                    <div class="item"><label>Сначала дорогие</label></div>
+                </div>            
+            </div>
+        </div>      
         
-
-
         <div class="frame1">
             <div class="frame2">
                 <div class="label">Верхняя одежда</div>
@@ -95,5 +109,24 @@
         <p>&copy; Вариант 2. Боярчук Даниил, группа ПИ-22-1</p>
     </footer>
 
+    <script>
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const isVisible = dropdown.style.display === 'block';
+            
+            document.getElementById('filter-dropdown').style.display = 'none';
+            document.getElementById('sort-dropdown').style.display = 'none';
+            
+            dropdown.style.display = isVisible ? 'none' : 'block';
+        }
+        
+        window.onclick = function(event) {
+            if (!event.target.closest('.filter-button') && !event.target.closest('.sort-button') && !event.target.closest('.dropdown')) {
+                document.getElementById('filter-dropdown').style.display = 'none';
+                document.getElementById('sort-dropdown').style.display = 'none';
+            }
+        }
+    </script>
+    
 </body>
 </html>
