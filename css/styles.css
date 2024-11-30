@@ -1,18 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 html{
     height: 100%;
+    font-size: 20px;
 }
 
 body{
     min-height: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    margin: 0;
-    padding: 0;
 }
 
 header{
     display: grid;
-    grid-template-columns: 160px 5fr 160px;
+    grid-template-columns: 1fr auto;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #EAECF0;    
@@ -22,15 +26,18 @@ header{
 .brand{
     display: flex;    
     align-items: center;
-    gap: 16px;
-    grid-column: 2;
+    gap: 16px;    
     justify-content: center;
+}
+
+.brand a{
+    text-decoration: none;
 }
 
 .brand .text{
     font-family: Inter, sans-serif; 
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.2rem;
     color: #354153;    
 }
 
@@ -44,13 +51,15 @@ header{
     display: flex;
     gap: 10px;
     padding: 10px;
+    cursor: pointer;
     background-color: transparent;
     border: none;
 }
 
 main{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
     padding: 26px 160px;
     gap: 16px;
 }
@@ -58,13 +67,14 @@ main{
 .action-header{
     display: flex;
     justify-content: space-between; 
-    position: relative;   
+    position: relative;  
 }
 
 .action-header button{  
     display: flex;
     gap: 8px;  
-    padding: 8px 16px 8px 16px;
+    padding: 8px 16px;
+    cursor: pointer;
     background-color: transparent;
     border: none;    
 }
@@ -72,7 +82,7 @@ main{
 .action-header .label{
     font-family: Inter, sans-serif; 
     font-weight: 600;
-    font-size: 16px;
+    font-size: 0.8rem;
     color: #354153;    
 }
 
@@ -121,13 +131,14 @@ input[type="checkbox"] {
 .dropdown label {     
     font-family: Inter, sans-serif; 
     font-weight: 400;
-    font-size: 16px;
+    font-size: 0.8rem;
     line-height: 24px;
     color: #354153; 
 }
 
 .frame1{    
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     gap: 10px;
 }
 
@@ -145,13 +156,13 @@ input[type="checkbox"] {
     padding: 10px 8px;
     font-family: Inter, sans-serif; 
     font-weight: 500;
-    font-size: 16px;
+    font-size: 0.8rem;
     color: #0D1421;        
 }
 
 .content{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-content: space-between;
 }
 
@@ -165,7 +176,7 @@ input[type="checkbox"] {
 .card-item .heading{
     font-family: Inter, sans-serif; 
     font-weight: 500;
-    font-size: 18px;
+    font-size: 0.9rem;
     color: #0D1421;   
 }
 
@@ -183,21 +194,21 @@ input[type="checkbox"] {
 .brand-name .text{
     font-family: Inter, sans-serif; 
     font-weight: 500;
-    font-size: 14px;
+    font-size: 0.7rem;
     color: #667085;  
 }
 
 .brand-name .name{
     font-family: Inter, sans-serif; 
     font-weight: 500;
-    font-size: 14px;
+    font-size: 0.7rem;
     color: #354153;  
 }
 
 .supporting-text{
     font-family: Inter, sans-serif; 
     font-weight: 400;
-    font-size: 14px;
+    font-size: 0.7rem;
     max-width: 293.25px;
     color: #667085;  
 }
@@ -211,6 +222,56 @@ footer{
 footer p{
     font-family: Inter, sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 0.8rem;
     color: #667085;  
 }  
+
+@media (max-width: 1000px) {
+    html{
+        font-size: 19px;
+    }
+
+    header{
+        padding: 14px 90px;
+    }
+
+    main{
+        padding: 26px 90px;
+    }
+
+    footer{
+        padding: 24px 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    html{
+        font-size: 18px;
+    }
+
+    header{
+        padding: 14px 60px;
+    }
+
+    main{
+        padding: 26px 60px;
+    }
+
+    footer{
+        padding: 24px 60px;
+    }
+
+    .frame1{
+        grid-template-columns: 1fr;
+    }
+
+    .frame2{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .frame2 .label{
+        display: flex;
+        justify-content: center;
+    }
+}
