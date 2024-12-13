@@ -6,8 +6,13 @@
     <title>Вариант 2</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <link rel="stylesheet" type="text/css" href="./fonts/inter.css">
+    <script src="./js/main.js"></script>
 </head>
-<body>
+<body onload="loadData()">   
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+     
     <header>        
         <div class="brand">
             <img src="./images/logo.svg" alt="Логотип" width="32" height="32">   
@@ -27,25 +32,25 @@
         <div class="action-header">
             <button type="button" class="filter-button" id="filter-btn" onclick="toggleDropdown('filter-dropdown')"> 
                 <img src="./images/leading.svg" alt="Фильтры" width="20" height="20">   
-                <div class="label">Фильтры</div>
+                <div class="label" id="filteredOption">Фильтры</div>
             </button>            
             <div id="filter-dropdown" class="dropdown">
                 <div class="main">
-                    <div class="item"><label><input type="checkbox"> Акне Студия</label></div>
-                    <div class="item"><label><input type="checkbox"> АМИ Париж</label></div>
-                    <div class="item"><label><input type="checkbox"> Вквадрате2</label></div>
-                    <div class="item"><label><input type="checkbox"> Каменный остров</label></div>          
+                    <div class="item"><label><input type="checkbox" value="Акне Студия"> Акне Студия</label></div>
+                    <div class="item"><label><input type="checkbox" value="АМИ Париж"> АМИ Париж</label></div>
+                    <div class="item"><label><input type="checkbox" value="Вквадрате2"> Вквадрате2</label></div>
+                    <div class="item"><label><input type="checkbox" value="Каменный остров"> Каменный остров</label></div>          
                 </div>            
             </div>
             <button type="button" class="sort-button" id="sort-btn" onclick="toggleDropdown('sort-dropdown')">
-                <div class="label">По умолчанию</div>
+                <div class="label" id="sortedOption">По умолчанию</div>
                 <img src="./images/trailing.svg" alt="Сортировка по цене" width="20" height="20">                   
             </button> 
             <div id="sort-dropdown" class="dropdown">
                 <div class="main">
-                    <div class="item"><label>По умолчанию</label></div>
-                    <div class="item"><label>Сначала доступные</label></div>
-                    <div class="item"><label>Сначала дорогие</label></div>
+                    <div class="item"><label onclick="sortOption('По умолчанию')">По умолчанию</label></div>
+                    <div class="item"><label onclick="sortOption('Сначала доступные')">Сначала доступные</label></div>
+                    <div class="item"><label onclick="sortOption('Сначала дорогие')">Сначала дорогие</label></div>
                 </div>            
             </div>
         </div>      
@@ -56,52 +61,7 @@
                 <div class="label">Брюки</div>
                 <div class="label">Аксессуары</div>
             </div>
-            <div class="content">
-                <div class="card-item">
-                    <img src="./images/image1.png" alt="Картинка 1">  
-                    <div class="heading">30 000 руб</div>   
-                    <div class="footer-section">
-                        <div class="brand-name">
-                            <div class="text">Бренд</div>
-                            <div class="name">Каменный остров</div>
-                        </div>
-                        <div class="supporting-text">Жилет с нашивкой компасом</div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <img src="./images/image2.png" alt="Картинка 2">  
-                    <div class="heading">18 800 руб</div>   
-                    <div class="footer-section">
-                        <div class="brand-name">
-                            <div class="text">Бренд</div>
-                            <div class="name">АМИ Париж</div>
-                        </div>
-                        <div class="supporting-text">Полосатая рубашка с коротким рукавом</div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <img src="./images/image3.png" alt="Картинка 3">  
-                    <div class="heading">47 300 руб</div>   
-                    <div class="footer-section">
-                        <div class="brand-name">
-                            <div class="text">Бренд</div>
-                            <div class="name">Вквадрате2</div>
-                        </div>
-                        <div class="supporting-text">Укороченные брюки с вышитым логотипом</div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <img src="./images/image4.png" alt="Картинка 4">   
-                    <div class="heading">19 000 руб</div>   
-                    <div class="footer-section">
-                        <div class="brand-name">
-                            <div class="text">Бренд</div>
-                            <div class="name">Акне Студия</div>
-                        </div>
-                        <div class="supporting-text">Полосатый двубортный блейзер</div>
-                    </div>
-                </div>
-            </div>
+            <div class="content" id="cardsContainer"></div>                
         </div>
     </main>
 
@@ -109,24 +69,6 @@
         <p>&copy; Вариант 2. Боярчук Даниил, группа ПИ-22-1</p>
     </footer>
 
-    <script>
-        function toggleDropdown(id) {
-            const dropdown = document.getElementById(id);
-            const isVisible = dropdown.style.display === 'block';
-            
-            document.getElementById('filter-dropdown').style.display = 'none';
-            document.getElementById('sort-dropdown').style.display = 'none';
-            
-            dropdown.style.display = isVisible ? 'none' : 'block';
-        }
-        
-        window.onclick = function(event) {
-            if (!event.target.closest('.filter-button') && !event.target.closest('.sort-button') && !event.target.closest('.dropdown')) {
-                document.getElementById('filter-dropdown').style.display = 'none';
-                document.getElementById('sort-dropdown').style.display = 'none';
-            }
-        }
-    </script>
     
 </body>
 </html>
